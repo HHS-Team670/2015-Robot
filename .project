@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>2015RobotSVR</name>
+=======
+<<<<<<< HEAD
+	<name>2015RobotCAN</name>
+=======
+	<name>2015RobotSVR</name>
+>>>>>>> efca77516d69822d99c956645dc6f022d6152443
+>>>>>>> cb2425b689a077942e4e6d2ef0be766e018e1a79
 	<comment></comment>
 	<projects>
 	</projects>
