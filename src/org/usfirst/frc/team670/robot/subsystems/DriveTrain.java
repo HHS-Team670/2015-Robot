@@ -2,10 +2,7 @@ package org.usfirst.frc.team670.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.CANJaguar;
-=======
->>>>>>> efca77516d69822d99c956645dc6f022d6152443
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
@@ -40,17 +37,6 @@ public class DriveTrain extends Subsystem
         leftTread = new CANJaguar(RobotMap.leftMotor);
         rightTread = new CANJaguar(RobotMap.rightMotor);
         middleTread = new CANJaguar(RobotMap.middleMotor);
-=======
-	public Jaguar leftTread;		//use these to access the right and left sides of the drivebase
-	public Jaguar rightTread;
-	public Jaguar middleTread;
-    
-	public DriveTrain() 
-	{
-        leftTread = new Jaguar(RobotMap.leftMotor);
-        rightTread = new Jaguar(RobotMap.rightMotor);
-        middleTread = new Jaguar(RobotMap.middleMotor);
->>>>>>> efca77516d69822d99c956645dc6f022d6152443
 	}
 
 	/**
