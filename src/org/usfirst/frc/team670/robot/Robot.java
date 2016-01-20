@@ -10,10 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-<<<<<<< HEAD
 import org.usfirst.frc.team670.robot.commands.AutoEncoder;
-=======
->>>>>>> cb2425b689a077942e4e6d2ef0be766e018e1a79
 import org.usfirst.frc.team670.robot.commands.AutoNothing;
 import org.usfirst.frc.team670.robot.commands.Lift;
 import org.usfirst.frc.team670.robot.commands.Move;
@@ -55,10 +52,7 @@ public class Robot extends IterativeRobot
 	    autoChooser = new SendableChooser();
 	    autoChooser.addDefault("Nothing", new AutoNothing());
 	    autoChooser.addObject("Move Forward", new Move(1, 0.75, 0));
-<<<<<<< HEAD
 	    autoChooser.addObject("Move Forward with Encoder", new AutoEncoder(100));
-=======
->>>>>>> cb2425b689a077942e4e6d2ef0be766e018e1a79
 	    autoChooser.addObject("Lift Elevator", new Lift(1, 1));
 	    autoChooser.addObject("Move up elevator and move back A LOT", new MoveAndLift(2.8, -0.8, 0, 1, 1, false, true));
 	    autoChooser.addObject("Move up elevator and move back A LOT AND GO TO LEFT", new MoveAndLift(2.8, -0.8, -0.75, 1, 1, false, true));

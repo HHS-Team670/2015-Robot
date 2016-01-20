@@ -2,14 +2,7 @@ package org.usfirst.frc.team670.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj.CANJaguar;
-=======
-<<<<<<< HEAD
-import edu.wpi.first.wpilibj.CANJaguar;
-=======
->>>>>>> efca77516d69822d99c956645dc6f022d6152443
->>>>>>> cb2425b689a077942e4e6d2ef0be766e018e1a79
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
@@ -31,44 +24,22 @@ import org.usfirst.frc.team670.robot.commands.DriveWithJoystick;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveTrain extends Subsystem 
-{
-	
-<<<<<<< HEAD
+public class DriveTrain extends Subsystem {
 	public CANJaguar leftTread;		//use these to access the right and left sides of the drivebase
 	public CANJaguar rightTread;
 	public CANJaguar middleTread;
-	public Encoder enc;
-=======
-<<<<<<< HEAD
-	public CANJaguar leftTread;		//use these to access the right and left sides of the drivebase
-	public CANJaguar rightTread;
-	public CANJaguar middleTread;
->>>>>>> cb2425b689a077942e4e6d2ef0be766e018e1a79
+    public Encoder encLeft;
+    public Encoder encRight;
     
 	public DriveTrain() 
 	{
         leftTread = new CANJaguar(RobotMap.leftMotor);
         rightTread = new CANJaguar(RobotMap.rightMotor);
         middleTread = new CANJaguar(RobotMap.middleMotor);
-<<<<<<< HEAD
         //0, and 1 are port numbers, false tells it to not inverse values
-    	enc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-=======
-=======
-	public Jaguar leftTread;		//use these to access the right and left sides of the drivebase
-	public Jaguar rightTread;
-	public Jaguar middleTread;
-    
-	public DriveTrain() 
-	{
-        leftTread = new Jaguar(RobotMap.leftMotor);
-        rightTread = new Jaguar(RobotMap.rightMotor);
-        middleTread = new Jaguar(RobotMap.middleMotor);
->>>>>>> efca77516d69822d99c956645dc6f022d6152443
->>>>>>> cb2425b689a077942e4e6d2ef0be766e018e1a79
+    	encLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+    	encRight = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	}
-
 	/**
 	 * When no other command is running let the operator drive around
 	 * using the PS3 joystick.
@@ -86,26 +57,24 @@ public class DriveTrain extends Subsystem
 		middleTread.set(RobotMap.victor_linearize(middle));
 	}
 	
-<<<<<<< HEAD
 	public void MoveDistanceCM(double cm){
 		double speed = 10;
 		double CircumfrenceInCm = 16;
-		double degrees = enc.get();
+		double degreesLeft = encLeft.get();
+		double degreesRight = encRight.get();
 		double DegPerCm = 360/CircumfrenceInCm; 
 		double totaldegrees = cm*DegPerCm;
 		
-		if(degrees < totaldegrees){
+		if(degreesLeft < totaldegrees && degreesRight < totaldegrees){
 			leftTread.set(speed);
 			rightTread.set(speed);
 		}
 		else{
-			leftTread.reset();
-			rightTread.reset();
+			leftTread.stopMotor();
+			rightTread.stopMotor();
 			}
 		
 		
 	}
 	
-=======
->>>>>>> cb2425b689a077942e4e6d2ef0be766e018e1a79
 }
