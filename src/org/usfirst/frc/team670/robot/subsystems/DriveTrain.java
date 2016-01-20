@@ -57,8 +57,7 @@ public class DriveTrain extends Subsystem {
 		middleTread.set(RobotMap.victor_linearize(middle));
 	}
 	
-	public void MoveDistanceCM(double cm){
-		double speed = 10;
+	public void MoveDistanceCM(double cm, double speed){
 		double CircumfrenceInCm = 16;
 		double degreesLeft = encLeft.get();
 		double degreesRight = encRight.get();

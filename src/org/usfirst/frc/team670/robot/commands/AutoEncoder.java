@@ -10,12 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoEncoder extends Command {
 
 	private double CM;
+	private double Speed;
 	 
 
 	 
-    public AutoEncoder(double distanceinCM) {
+    public AutoEncoder(double distanceinCM, double speedinSpeed) {
 	        requires(Robot.driveTrain);
 	        CM = distanceinCM;
+	        Speed = speedinSpeed;
 	    }
    
 
@@ -25,7 +27,7 @@ public class AutoEncoder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.MoveDistanceCM(CM);
+    	Robot.driveTrain.MoveDistanceCM(CM, Speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
