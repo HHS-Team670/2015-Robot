@@ -25,17 +25,17 @@ import org.usfirst.frc.team670.robot.commands.DriveWithJoystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
-	public CANJaguar leftTread;		//use these to access the right and left sides of the drivebase
-	public CANJaguar rightTread;
-	public CANJaguar middleTread;
+	public Jaguar leftTread;		//use these to access the right and left sides of the drivebase
+	public Jaguar rightTread;
+	public Jaguar middleTread;
     public Encoder encLeft;
     public Encoder encRight;
     
 	public DriveTrain() 
 	{
-        leftTread = new CANJaguar(RobotMap.leftMotor);
-        rightTread = new CANJaguar(RobotMap.rightMotor);
-        middleTread = new CANJaguar(RobotMap.middleMotor);
+        leftTread = new Jaguar(RobotMap.leftMotor);
+        rightTread = new Jaguar(RobotMap.rightMotor);
+        middleTread = new Jaguar(RobotMap.middleMotor);
         //0, and 1 are port numbers, false tells it to not inverse values
     	encLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     	encRight = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
