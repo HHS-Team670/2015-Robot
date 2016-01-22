@@ -25,20 +25,36 @@ import org.usfirst.frc.team670.robot.commands.DriveWithJoystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
+<<<<<<< HEAD
 	public Jaguar leftTread;		//use these to access the right and left sides of the drivebase
 	public Jaguar rightTread;
 	public Jaguar middleTread;
+=======
+	public final double gearRatio; 
+	public CANJaguar leftTread;		//use these to access the right and left sides of the drivebase
+	public CANJaguar rightTread;
+	public CANJaguar middleTread;
+>>>>>>> origin/encoders
     public Encoder encLeft;
     public Encoder encRight;
     
 	public DriveTrain() 
 	{
+<<<<<<< HEAD
         leftTread = new Jaguar(RobotMap.leftMotor);
         rightTread = new Jaguar(RobotMap.rightMotor);
         middleTread = new Jaguar(RobotMap.middleMotor);
+=======
+        leftTread = new CANJaguar(RobotMap.leftMotor);
+        rightTread = new CANJaguar(RobotMap.rightMotor);
+        middleTread = new CANJaguar(RobotMap.middleMotor);
+        gearRatio = 10.71;
+>>>>>>> origin/encoders
         //0, and 1 are port numbers, false tells it to not inverse values
-    	encLeft = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-    	encRight = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+    	encLeft = new Encoder(0, 1);
+    	encRight = new Encoder(2, 3);
+		encLeft.reset();
+		encRight.reset();
 	}
 	/**
 	 * When no other command is running let the operator drive around
@@ -52,21 +68,30 @@ public class DriveTrain extends Subsystem {
 	
 	public void drive(double left, double right, double middle) 
 	{
+		double degreesLeft = encLeft.getRate();
+		double degreesRight = encRight.getRate();
+		System.out.println("DegreesLeft: " + degreesLeft + " | DegreesRight: " + degreesRight );
 		leftTread.set(RobotMap.victor_linearize(left));
 		rightTread.set(-RobotMap.victor_linearize(right));
 		middleTread.set(RobotMap.victor_linearize(middle));
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void MoveDistanceCM(double cm, double speed){
+
+		
 		double CircumfrenceInCm = 16;
-		double degreesLeft = encLeft.get();
-		double degreesRight = encRight.get();
+		double degreesLeft = encLeft.getRate();
+		double degreesRight = encRight.getRate();
 		double DegPerCm = 360/CircumfrenceInCm; 
-		double totaldegrees = cm*DegPerCm;
+		double totaldegrees = gearRatio*(cm*DegPerCm);
+	
+		System.out.println("DegreesLeft: " + degreesLeft + " | DegreesRight: " + degreesRight );
 		
 		if(degreesLeft < totaldegrees && degreesRight < totaldegrees){
-			leftTread.set(speed);
+			
 			rightTread.set(speed);
+			leftTread.set(speed);
 		}
 		else{
 			leftTread.stopMotor();
