@@ -2,9 +2,6 @@ package org.usfirst.frc.team670.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
- *
- */
 public class MoveAndLift extends CommandGroup {
     
     public  MoveAndLift(double moveTime, double moveAmount, double moveAmountSide, double liftTime, double liftAmount, boolean sameTime, boolean liftFirst) {

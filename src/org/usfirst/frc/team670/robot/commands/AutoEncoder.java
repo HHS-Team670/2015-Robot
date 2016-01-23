@@ -1,18 +1,12 @@
 package org.usfirst.frc.team670.robot.commands;
 
 import org.usfirst.frc.team670.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class AutoEncoder extends Command {
 
 	private double CM;
 	private double Speed;
-	 
-
 	 
     public AutoEncoder(double distanceinCM, double speedinSpeed) {
 	        requires(Robot.driveTrain);
@@ -20,7 +14,6 @@ public class AutoEncoder extends Command {
 	        Speed = speedinSpeed;
 	    }
    
-
     // Called just before this Command runs the first time
     protected void initialize() {
     }
