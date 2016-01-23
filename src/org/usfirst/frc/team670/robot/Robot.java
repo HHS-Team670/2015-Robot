@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team670.robot.commands.AutoEncoder;
+import org.usfirst.frc.team670.robot.commands.EncoderMove;
 import org.usfirst.frc.team670.robot.commands.AutoNothing;
 import org.usfirst.frc.team670.robot.commands.Lift;
 import org.usfirst.frc.team670.robot.commands.Move;
@@ -48,8 +48,8 @@ public class Robot extends IterativeRobot
 	    
 	    autoChooser = new SendableChooser();
 	    autoChooser.addDefault("Nothing", new AutoNothing());
-	    autoChooser.addObject("Move Forward", new Move(5, 10, 0));
-	    autoChooser.addObject("Move Forward with Encoder", new AutoEncoder(10, 0.5));
+	    autoChooser.addObject("Move Forward", new Move(3, 1, 0));
+	    autoChooser.addObject("Move Forward with Encoder", new EncoderMove(18));
 	    autoChooser.addObject("Lift Elevator", new Lift(1, 1));
 	    autoChooser.addObject("Move up elevator and move back A LOT", new MoveAndLift(2.8, -0.8, 0, 1, 1, false, true));
 	    autoChooser.addObject("Move up elevator and move back A LOT AND GO TO LEFT", new MoveAndLift(2.8, -0.8, -0.75, 1, 1, false, true));

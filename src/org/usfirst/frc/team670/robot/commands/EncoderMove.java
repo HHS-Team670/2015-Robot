@@ -3,15 +3,13 @@ package org.usfirst.frc.team670.robot.commands;
 import org.usfirst.frc.team670.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class AutoEncoder extends Command {
+public class EncoderMove extends Command {
 
-	private double CM;
-	private double Speed;
+	private double distance;
 	 
-    public AutoEncoder(double distanceinCM, double speedinSpeed) {
+    public EncoderMove(double distance) {
 	        requires(Robot.driveTrain);
-	        CM = distanceinCM;
-	        Speed = speedinSpeed;
+	        this.distance = distance;
 	    }
    
     // Called just before this Command runs the first time
@@ -20,7 +18,7 @@ public class AutoEncoder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.MoveDistanceCM(CM, Speed);
+    	Robot.driveTrain.MoveDistanceInches(distance);
     }
 
     // Make this return true when this Command no longer needs to run execute()
