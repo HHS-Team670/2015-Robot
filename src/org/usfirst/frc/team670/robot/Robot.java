@@ -1,14 +1,17 @@
 
 package org.usfirst.frc.team670.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.SampleRobot;
 
 import org.usfirst.frc.team670.robot.commands.AutoNothing;
 import org.usfirst.frc.team670.robot.commands.Lift;
@@ -16,6 +19,13 @@ import org.usfirst.frc.team670.robot.commands.Move;
 import org.usfirst.frc.team670.robot.commands.MoveAndLift;
 import org.usfirst.frc.team670.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team670.robot.subsystems.Elevator;
+
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.DrawMode;
+import com.ni.vision.NIVision.Image;
+import com.ni.vision.NIVision.ShapeMode;
+
+
 
 
 /**
@@ -27,7 +37,11 @@ import org.usfirst.frc.team670.robot.subsystems.Elevator;
  */
 public class Robot extends IterativeRobot 
 {
-    Command autoCommand;
+	CameraServer server;
+	int session;
+    Image frame;
+	
+	Command autoCommand;
     SendableChooser autoChooser;
     
     public static OI oi;
@@ -59,8 +73,40 @@ public class Robot extends IterativeRobot
 	    SmartDashboard.putData("Autonomous Command Chooser", autoChooser);
 	    
         //autoCommand = new AutoCommand();
+	    
+	    frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+	    // the camera name (ex "cam0") can be found through the roborio web interface
+        session = NIVision.IMAQdxOpenCamera("cam0",
+                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+        NIVision.IMAQdxConfigureGrab(session);
     }
-	
+   
+    /** 
+     * Copied from the IntermediateVision example.
+     */
+    public void operatorControl() {
+    	NIVision.IMAQdxStartAcquisition(session);
+
+        /**
+         * grab an image, draw the circle, and provide it for the camera server
+         * which will in turn send it to the dashboard.
+         */
+        NIVision.Rect rect = new NIVision.Rect(10, 10, 100, 100);
+
+        while (isOperatorControl() && isEnabled()) {
+
+            NIVision.IMAQdxGrab(session, frame, 1);
+            NIVision.imaqDrawShapeOnImage(frame, frame, rect,
+                    DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+            
+            CameraServer.getInstance().setImage(frame);
+
+            /** robot code here! **/
+            Timer.delay(0.005);		// wait for a motor update time
+        }
+        NIVision.IMAQdxStopAcquisition(session);
+    }
+
     public void autonomousInit() 
     {
         autoCommand = (Command) autoChooser.getSelected();
