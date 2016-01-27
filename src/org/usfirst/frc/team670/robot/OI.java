@@ -229,6 +229,5 @@ public class OI
 		return operatorStick.getPOV();
 	}
 	
-	
 }
 

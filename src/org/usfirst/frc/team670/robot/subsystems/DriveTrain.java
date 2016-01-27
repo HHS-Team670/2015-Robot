@@ -41,9 +41,19 @@ public class DriveTrain extends Subsystem {
 		double speedLeft = encLeft.getRate();
 		double speedRight = encRight.getRate();
 		System.out.println("LeftSpeed: " + speedLeft + " | RightSpeed: " + speedRight );
-		leftTread.set(RobotMap.victor_linearize(left));
-		rightTread.set(-RobotMap.victor_linearize(right));
-		middleTread.set(RobotMap.victor_linearize(middle));
+		
+		leftTread.setPercentMode();
+		rightTread.setPercentMode();
+		leftTread.enableControl();
+		rightTread.enableControl();
+		
+		leftTread.set(left);
+		rightTread.set(right);
+		middleTread.set(middle);
+		
+		//leftTread.set(RobotMap.victor_linearize(left));
+		//rightTread.set(-RobotMap.victor_linearize(right));
+		//middleTread.set(RobotMap.victor_linearize(middle));
 	}
 	
 	public void MoveDistanceInches(double inches){
@@ -52,6 +62,8 @@ public class DriveTrain extends Subsystem {
 
 		leftTread.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
 		rightTread.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
+		leftTread.enableControl();
+		rightTread.enableControl();
 		
 		leftTread.set(numRotations);
 		rightTread.set(numRotations);
@@ -69,8 +81,8 @@ public class DriveTrain extends Subsystem {
 		else{
 			leftTread.stopMotor();
 			rightTread.stopMotor();
-			}
-		*/
+			}*/
+		
 		
 		
 	}

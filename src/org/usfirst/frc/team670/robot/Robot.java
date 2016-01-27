@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot
 	    
 	    autoChooser = new SendableChooser();
 	    autoChooser.addDefault("Nothing", new AutoNothing());
-	    autoChooser.addObject("Move Forward", new Move(3, 1, 0));
+	    autoChooser.addObject("Move Forward", new Move(3, 0.5, 0));
 	    autoChooser.addObject("Move Forward with Encoder", new EncoderMove(18));
 	    autoChooser.addObject("Lift Elevator", new Lift(1, 1));
 	    autoChooser.addObject("Move up elevator and move back A LOT", new MoveAndLift(2.8, -0.8, 0, 1, 1, false, true));
