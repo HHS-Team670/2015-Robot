@@ -10,16 +10,20 @@ public class DriveTrain extends Subsystem {
 	public static final double gearRatio = 10.71;
 	public static final double diameterInInches = 6;
 	public static final double circumferenceInInches = diameterInInches * Math.PI;
-	public CANJaguar leftTread;	//use these to access the right and left sides of the drivebase
-	public CANJaguar rightTread;
+	public CANJaguar leftTread1;
+	public CANJaguar leftTread2;
+	public CANJaguar rightTread1;
+	public CANJaguar rightTread2;
 	public CANJaguar middleTread;
     public Encoder encLeft;
     public Encoder encRight;
     
 	public DriveTrain() 
 	{
-        leftTread = new CANJaguar(RobotMap.leftMotor);
-        rightTread = new CANJaguar(RobotMap.rightMotor);
+        leftTread1 = new CANJaguar(RobotMap.leftMotor1);
+        rightTread1 = new CANJaguar(RobotMap.rightMotor1);
+        leftTread2 = new CANJaguar(RobotMap.leftMotor2);
+        rightTread2 = new CANJaguar(RobotMap.rightMotor2);
         middleTread = new CANJaguar(RobotMap.middleMotor);
     	encLeft = new Encoder(0, 1);
     	encRight = new Encoder(2, 3);
@@ -42,13 +46,19 @@ public class DriveTrain extends Subsystem {
 		double speedRight = encRight.getRate();
 		System.out.println("LeftSpeed: " + speedLeft + " | RightSpeed: " + speedRight );
 		
-		leftTread.setPercentMode();
-		rightTread.setPercentMode();
-		leftTread.enableControl();
-		rightTread.enableControl();
+		leftTread1.setPercentMode();
+		rightTread1.setPercentMode();
+		leftTread2.setPercentMode();
+		rightTread2.setPercentMode();
+		leftTread1.enableControl();
+		rightTread1.enableControl();
+		leftTread2.enableControl();
+		rightTread2.enableControl();
 		
-		leftTread.set(left);
-		rightTread.set(right);
+		leftTread1.set(left);
+		leftTread2.set(left);
+		rightTread1.set(right);
+		rightTread2.set(right);
 		middleTread.set(middle);
 		
 		//leftTread.set(RobotMap.victor_linearize(left));
@@ -60,13 +70,19 @@ public class DriveTrain extends Subsystem {
 		
 		double numRotations = inches/circumferenceInInches;
 
-		leftTread.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
-		rightTread.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
-		leftTread.enableControl();
-		rightTread.enableControl();
+		leftTread1.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
+		rightTread1.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
+		leftTread2.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
+		rightTread2.setPositionMode(CANJaguar.kQuadEncoder, (int)(gearRatio*360), 0, 0, 0);
+		leftTread1.enableControl();
+		rightTread1.enableControl();
+		leftTread2.enableControl();
+		rightTread2.enableControl();
 		
-		leftTread.set(numRotations);
-		rightTread.set(numRotations);
+		leftTread1.set(numRotations);
+		leftTread2.set(numRotations);
+		rightTread1.set(numRotations);
+		rightTread2.set(numRotations);
 		/*
 		double DegPerCm = 360/circumfrenceInCm; 
 		double totaldegrees = gearRatio*(cm*DegPerCm);
@@ -81,10 +97,7 @@ public class DriveTrain extends Subsystem {
 		else{
 			leftTread.stopMotor();
 			rightTread.stopMotor();
-			}*/
-		
-		
-		
+			}*/	
 	}
 	
 }
