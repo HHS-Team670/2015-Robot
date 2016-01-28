@@ -26,8 +26,6 @@ import com.ni.vision.NIVision.Image;
 import com.ni.vision.NIVision.ShapeMode;
 
 
-
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -36,11 +34,7 @@ import com.ni.vision.NIVision.ShapeMode;
  * directory.
  */
 public class Robot extends IterativeRobot 
-{
-	CameraServer server;
-	int session;
-    Image frame;
-	
+{		
 	Command autoCommand;
     SendableChooser autoChooser;
     
@@ -74,38 +68,10 @@ public class Robot extends IterativeRobot
 	    
         //autoCommand = new AutoCommand();
 	    
-	    frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-	    // the camera name (ex "cam0") can be found through the roborio web interface
-        session = NIVision.IMAQdxOpenCamera("cam0",
-                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-        NIVision.IMAQdxConfigureGrab(session);
+	    
     }
    
-    /** 
-     * Copied from the IntermediateVision example.
-     */
-    public void operatorControl() {
-    	NIVision.IMAQdxStartAcquisition(session);
-
-        /**
-         * grab an image, draw the circle, and provide it for the camera server
-         * which will in turn send it to the dashboard.
-         */
-        NIVision.Rect rect = new NIVision.Rect(10, 10, 100, 100);
-
-        while (isOperatorControl() && isEnabled()) {
-
-            NIVision.IMAQdxGrab(session, frame, 1);
-            NIVision.imaqDrawShapeOnImage(frame, frame, rect,
-                    DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
-            
-            CameraServer.getInstance().setImage(frame);
-
-            /** robot code here! **/
-            Timer.delay(0.005);		// wait for a motor update time
-        }
-        NIVision.IMAQdxStopAcquisition(session);
-    }
+   
 
     public void autonomousInit() 
     {
