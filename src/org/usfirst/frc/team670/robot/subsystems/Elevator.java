@@ -2,16 +2,17 @@ package org.usfirst.frc.team670.robot.subsystems;
 
 import org.usfirst.frc.team670.robot.RobotMap;
 import org.usfirst.frc.team670.robot.commands.LiftWithJoystick;
-import edu.wpi.first.wpilibj.Jaguar;
+
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Elevator extends Subsystem {
     
-	private Jaguar liftMotor;
+	private CANJaguar liftMotor;
 	
     public Elevator()
     {
-    	liftMotor = new Jaguar(RobotMap.liftMotor);    
+    	liftMotor = new CANJaguar(RobotMap.liftMotor);    
     }
 
     public void initDefaultCommand() 

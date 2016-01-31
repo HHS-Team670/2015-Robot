@@ -48,13 +48,13 @@ public class Robot extends IterativeRobot
 	    
 	    autoChooser = new SendableChooser();
 	    autoChooser.addDefault("Nothing", new AutoNothing());
-	    autoChooser.addObject("Move Forward", new Move(3, 0.5, 0));
+	    //autoChooser.addObject("Move Forward", new Move(3, 0.5, 0));
 	    autoChooser.addObject("Move Forward with Encoder", new EncoderMove(18));
-	    autoChooser.addObject("Lift Elevator", new Lift(1, 1));
-	    autoChooser.addObject("Move up elevator and move back A LOT", new MoveAndLift(2.8, -0.8, 0, 1, 1, false, true));
-	    autoChooser.addObject("Move up elevator and move back A LOT AND GO TO LEFT", new MoveAndLift(2.8, -0.8, -0.75, 1, 1, false, true));
-	    autoChooser.addObject("Move up elevator and move back A LOT AND GO TO RIGHT", new MoveAndLift(2.8, -0.8, 0.75, 1, 1, false, true));
-	    autoChooser.addObject("Move up elevator and move back a tiny bit bruh", new MoveAndLift(0.5, -0.75, 0, 1, 1, false, true));
+	    //autoChooser.addObject("Lift Elevator", new Lift(1, 1));
+	    //autoChooser.addObject("Move up elevator and move back A LOT", new MoveAndLift(2.8, -0.8, 0, 1, 1, false, true));
+	    //autoChooser.addObject("Move up elevator and move back A LOT AND GO TO LEFT", new MoveAndLift(2.8, -0.8, -0.75, 1, 1, false, true));
+	    //autoChooser.addObject("Move up elevator and move back A LOT AND GO TO RIGHT", new MoveAndLift(2.8, -0.8, 0.75, 1, 1, false, true));
+	    //autoChooser.addObject("Move up elevator and move back a tiny bit bruh", new MoveAndLift(0.5, -0.75, 0, 1, 1, false, true));
 	    SmartDashboard.putData("Autonomous Command Chooser", autoChooser);
 	    
         //autoCommand = new AutoCommand();
