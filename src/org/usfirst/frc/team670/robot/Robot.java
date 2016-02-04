@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team670.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -7,14 +6,12 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team670.robot.commands.AutoNothing;
 import org.usfirst.frc.team670.robot.commands.Lift;
 import org.usfirst.frc.team670.robot.commands.Move;
 import org.usfirst.frc.team670.robot.commands.MoveAndLift;
 import org.usfirst.frc.team670.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team670.robot.subsystems.Elevator;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,7 +20,7 @@ import org.usfirst.frc.team670.robot.subsystems.Elevator;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-//meld test comment
+
 public class Robot extends IterativeRobot 
 {
     Command autoCommand;
@@ -56,8 +53,6 @@ public class Robot extends IterativeRobot
 	    autoChooser.addObject("Move up elevator and move back A LOT AND GO TO RIGHT", new MoveAndLift(2.8, -0.8, 0.75, 1, 1, false, true));
 	    autoChooser.addObject("Move up elevator and move back a tiny bit bruh", new MoveAndLift(0.5, -0.75, 0, 1, 1, false, true));
 	    SmartDashboard.putData("Autonomous Command Chooser", autoChooser);
-	    
-        //autoCommand = new AutoCommand();
     }
 	
     public void autonomousInit() 
