@@ -83,7 +83,9 @@ public class Robot extends IterativeRobot
     	
         if (autoCommand != null) 
         	autoCommand.cancel();
-    	
+        
+    	Command testCommand = new Lift(0, 0);
+    	testCommand.start();
     }
     
     /**
@@ -91,7 +93,7 @@ public class Robot extends IterativeRobot
      */
     public void teleopPeriodic() 
     {
-        Scheduler.getInstance().run();
+    	Scheduler.getInstance().run();
     }
 
     /**

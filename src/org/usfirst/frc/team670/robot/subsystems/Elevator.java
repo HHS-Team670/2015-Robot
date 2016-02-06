@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Elevator extends Subsystem {
     
-	private CANJaguar liftMotor;
+	//private CANJaguar liftMotor;
 	
     public Elevator()
     {
-    	liftMotor = new CANJaguar(RobotMap.liftMotor);    
+    	//liftMotor = new CANJaguar(RobotMap.liftMotor);    
     }
 
     public void initDefaultCommand() 
@@ -22,7 +22,7 @@ public class Elevator extends Subsystem {
     
     public void setMotor(double val)
     {
-    	liftMotor.set(RobotMap.victor_linearize(val));
+    	//liftMotor.set(RobotMap.victor_linearize(val));
     }
     
     
