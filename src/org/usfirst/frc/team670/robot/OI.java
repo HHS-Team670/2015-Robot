@@ -22,7 +22,7 @@ public class OI
 	private Joystick rightDriveStick = new Joystick(RobotMap.rightDriveStick);
 	private Joystick operatorStick = new Joystick(RobotMap.operatorStick);
 	private Joystick arcButtons = new Joystick(RobotMap.arcButtons);
-	
+	//ser
 	JoystickButton ldsT;
 	JoystickButton lds2;
 	JoystickButton lds3;
