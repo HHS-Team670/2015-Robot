@@ -2,6 +2,7 @@ package org.usfirst.frc.team670.robot.subsystems;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
 import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
@@ -68,7 +69,17 @@ public class DriveTrain extends Subsystem {
 	public void MoveDistanceInches(double inches){
 		double numTicks = inches/inchesPerTick;
 		
-		leftTread1.set(0.5);
+		leftTread1.setEncPosition(0);
+		leftTread1.changeControlMode(CANTalon.TalonControlMode.Position);
+		leftTread1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		leftTread1.reverseSensor(true);
+		//leftTread1.configEncoderCodesPerRev(360);
+		leftTread1.setF(0.25);
+		leftTread1.setPID(0.3, 0, 0);
+		leftTread1.setCloseLoopRampRate(0);
+		leftTread1.setIZone(0);
+		leftTread1.set(1);
+		System.out.println(leftTread1.getControlMode());
 		//leftTread1.set(numTicks);
 	}
 }
