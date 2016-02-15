@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team670.robot.commands.EncoderMove;
 import org.usfirst.frc.team670.robot.commands.AutoNothing;
 import org.usfirst.frc.team670.robot.commands.Lift;
-import org.usfirst.frc.team670.robot.commands.Move;
-import org.usfirst.frc.team670.robot.commands.MoveAndLift;
 import org.usfirst.frc.team670.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team670.robot.subsystems.Elevator;
 
