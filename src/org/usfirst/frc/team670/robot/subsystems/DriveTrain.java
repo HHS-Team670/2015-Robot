@@ -15,8 +15,6 @@ public class DriveTrain extends Subsystem {
 	//public CANJaguar rightTread1;
 	//public CANJaguar rightTread2;
 	//public CANJaguar middleTread;
-    //public Encoder encLeft;
-    //public Encoder encRight;
     
 	public DriveTrain() 
 	{
@@ -25,10 +23,6 @@ public class DriveTrain extends Subsystem {
         leftTread2 = new CANTalon(RobotMap.leftMotor2);
         //rightTread2 = new CANJaguar(RobotMap.rightMotor2);
         //middleTread = new CANJaguar(RobotMap.middleMotor);
-    	//encLeft = new Encoder(0, 1, true, EncodingType.k4X);
-    	//encRight = new Encoder(2, 3, true, EncodingType.k4X);
-		//encLeft.reset();
-		//encRight.reset();
         //leftTread1.changeControlMode(TalonControlMode.Position);
         leftTread2.changeControlMode(CANTalon.TalonControlMode.Follower);
         leftTread2.set(RobotMap.leftMotor1);
@@ -63,19 +57,21 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void MoveDistanceInches(double inches){
-		double numTicks = inches/inchesPerTick;
-		
 		leftTread1.setEncPosition(0);
 		leftTread1.changeControlMode(CANTalon.TalonControlMode.Position);
 		leftTread1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		leftTread1.reverseSensor(true);
-		//leftTread1.configEncoderCodesPerRev(360);
-		leftTread1.setF(0.25);
-		leftTread1.setPID(0.3, 0, 0);
-		leftTread1.setCloseLoopRampRate(0);
-		leftTread1.setIZone(0);
-		leftTread1.set(1);
-		System.out.println(leftTread1.getControlMode());
-		//leftTread1.set(numTicks);
+		leftTread1.setAllowableClosedLoopErr(720);
+		
+		double p = 0.1;
+		double i = 0;
+		double d = 0;
+		double f = 0;
+		int izone = 0;
+		double closeLoopRampRate = 0;
+		int profile = 0;
+		
+		leftTread1.setPID(p, i, d, f, izone, closeLoopRampRate, profile);
+		
 	}
 }
