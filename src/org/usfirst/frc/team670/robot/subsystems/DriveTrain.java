@@ -55,7 +55,7 @@ public class DriveTrain extends Subsystem {
 		middleTread.set(RobotMap.victor_linearize(middle));
 		*/
 	}
-	
+	/*
 	public void MoveDistanceInches(double inches){
 		leftTread1.setEncPosition(0);
 		leftTread1.changeControlMode(CANTalon.TalonControlMode.Position);
@@ -73,5 +73,34 @@ public class DriveTrain extends Subsystem {
 		
 		leftTread1.setPID(p, i, d, f, izone, closeLoopRampRate, profile);
 		
-	}
+	}*/
+	
+	public void moveDistanceInches(double inches){
+    	double numTicks = (inches/inchesPerTick) * 4;
+		
+		leftTread1.changeControlMode(CANTalon.TalonControlMode.Position);
+		leftTread1.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		leftTread1.setEncPosition(0);
+		//leftTread1.reverseSensor(true);
+		//leftTalon1.setAllowableClosedLoopErr(0);
+		
+		//CAN CHANGE PID VALUES IN ROBORIO WEBDASHBOARD
+		double p = .8;
+		double i = .0025;
+		double d = .8;
+		double f = 0;
+		int izone = 0;
+		double closeLoopRampRate = 36;
+		int profile = 0;
+		
+		leftTread1.setCloseLoopRampRate(1);
+		
+		//leftTread1.setPID(p, i, d, f, izone, closeLoopRampRate, profile);
+		
+		leftTread1.setPID(p, i, d);
+		
+		//leftTread1.set(-2520);
+		
+		leftTread1.set(1440);
+    }
 }

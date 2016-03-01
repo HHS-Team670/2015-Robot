@@ -18,7 +18,7 @@ public class EncoderMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.MoveDistanceInches(distance);
+    	Robot.driveTrain.moveDistanceInches(distance);
     	System.out.println("Execute");
     }
 
